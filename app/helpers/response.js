@@ -1,28 +1,44 @@
-const success = (res, message = "Success", data = []) => {
+const success = (res, message = "Success", data = [], code = 200) => {
   return res.json(
     {
       status: true,
       message: message,
       data: data,
     },
-    200
+    code
   );
 };
 
-const error = (res, message = "Error") => {
+const validationMessage = (
+  res,
+  message = "Validation failed",
+  error = [],
+  code = 400
+) => {
   return res.json(
     {
       status: false,
       message: message,
+      error: error,
     },
-    400
+    code
   );
 };
 
-const message = (res, message = "Success") => {
+const error = (res, message = "Error", code = 400) => {
   return res.json(
     {
-      status: true,
+      status: false,
+      message: message
+    },
+    code
+  );
+};
+
+const message = (res, message = "Success", status) => {
+  return res.json(
+    {
+      status: status,
       message: message,
     },
     200
@@ -33,4 +49,5 @@ module.exports = {
   success,
   error,
   message,
+  validationMessage,
 };
