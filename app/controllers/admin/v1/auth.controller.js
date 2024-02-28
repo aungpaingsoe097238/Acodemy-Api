@@ -1,4 +1,3 @@
-const { validationResult } = require("express-validator");
 const bcrypt = require("../../../helpers/bcrypt");
 const jwt = require("../../../helpers/jwt");
 const response = require("../../../helpers/response");
@@ -7,15 +6,6 @@ const Role = require("../../../models").Role;
 const Permission = require("../../../models").Permission;
 
 const login = async (req, res) => {
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return response.validationMessage(
-      res,
-      "Invalid Credential",
-      errors.array()
-    );
-  }
 
   const { email, password } = req.body;
 

@@ -1,5 +1,6 @@
 const Category = require("../../../models").Category;
 const response = require("../../../helpers/response");
+const customValidationResult = require("../../../helpers/customValidationResult");
 
 const index = async (req, res) => {
   const categories = await Category.findAll();
@@ -11,12 +12,12 @@ const store = async (req, res) => {
     const { name, parentId } = req.body;
 
     // Create a new category
-    const newCategory = await Category.create({
+    const category = await Category.create({
       name,
       parentId,
     });
 
-    return response.success(res, "Category created successfully", newCategory);
+    return response.success(res, "Category created successfully", category);
   } catch (error) {
     return response.error(res, "Failed to create category");
   }
@@ -35,10 +36,14 @@ const update = async (req, res) => {
     }
 
     // Update category attributes
-    category.name = name;
-    category.parentId = parentId;
+    if(name){
+      category.name = name;
+    }
 
-    // Save the updated category to the database
+    if(parentId){
+      category.parentId = parentId;
+    }
+
     await category.save();
 
     return response.success(res, "Category updated successfully", category);
