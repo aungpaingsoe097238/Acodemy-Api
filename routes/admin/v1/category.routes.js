@@ -20,10 +20,10 @@ router.post(
 );
 router
   .route("/:id")
-  .get(authMiddleware, categoryController.store)
+  .get(authMiddleware, categoryController.show)
   .put(
     authMiddleware,
-    checkSchema(categorySchema.store),
+    checkSchema(categorySchema.update),
     (req, res, next) =>
       customValidationResult(req, res, next, "Category update failed"),
     categoryController.update

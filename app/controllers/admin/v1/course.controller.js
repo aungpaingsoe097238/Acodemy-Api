@@ -3,7 +3,6 @@ const Category = require("../../../models").Category;
 const response = require("../../../helpers/response");
 
 const index = async (req, res) => {
-  
   const courses = await Course.findAll({
     attributes: ["id", "title"],
     order: [["id", "DESC"]],
@@ -18,8 +17,10 @@ const index = async (req, res) => {
 
 const store = async (req, res) => {
   try {
-    const course = await Category.create(req.body);
-    return response.success(res, "Course created successfully", course);
+    const { title, description, categoryId, price, skill, lectures, duration } = req.body;  
+    console.log(req);
+    // const course = await Category.create(req.body);
+    // return response.success(res, "Course created successfully", course);
   } catch (error) {
     return response.error(res, "Failed to create course");
   }
