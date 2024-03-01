@@ -11,30 +11,41 @@ module.exports = {
       },
       title: {
         type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
       },
       slug: {
         type: Sequelize.STRING,
+        allowNull: false
       },
       except: {
         type: Sequelize.STRING,
+        allowNull: false
       },
       description: {
         type: Sequelize.STRING,
       },
       categoryId: {
         type: Sequelize.INTEGER,
+        references: { model: "Categories", key: "id" },
+        onDelete: "cascade",
+        allowNull: false
       },
       price: {
         type: Sequelize.INTEGER,
+        allowNull: false
       },
       skill: {
         type: Sequelize.ENUM("Beginner", "Intermediate", "Advanced"),
+        allowNull: false
       },
-      image_url: {
+      imageUrl: {
         type: Sequelize.STRING,
+        allowNull: false
       },
       lectures: {
         type: Sequelize.INTEGER,
+        allowNull: false
       },
       duration: {
         type: Sequelize.STRING,

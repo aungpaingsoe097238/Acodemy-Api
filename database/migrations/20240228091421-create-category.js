@@ -11,10 +11,13 @@ module.exports = {
       },
       name: {
         type: Sequelize.STRING,
+        unique: true,
       },
       parentId: {
         type: Sequelize.INTEGER,
         allowNull: true,
+        references: { model: "Categories", key: "id" },
+        onDelete: "cascade",
       },
       createdAt: {
         allowNull: false,

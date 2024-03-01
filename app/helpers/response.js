@@ -9,22 +9,6 @@ const success = (res, message = "Success", data = [], code = 200) => {
   );
 };
 
-const validationMessage = (
-  res,
-  message = "Validation failed",
-  error = [],
-  code = 400
-) => {
-  return res.json(
-    {
-      status: false,
-      message: message,
-      error: error,
-    },
-    code
-  );
-};
-
 const error = (res, message = "Error", code = 400) => {
   return res.json(
     {
@@ -48,6 +32,5 @@ const message = (res, message = "Success", status) => {
 module.exports = {
   success,
   error,
-  message,
-  validationMessage,
+  message
 };

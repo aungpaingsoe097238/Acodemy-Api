@@ -5,6 +5,8 @@ const app = express();
 const server = http.createServer(app);
 const cors = require("cors");
 
+app.use(express.json());
+
 // Routes
 const routes = require("./routes");
 
@@ -13,7 +15,6 @@ let corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(express.json());
 
 // Routes
 app.use("/api", routes);
