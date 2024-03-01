@@ -49,18 +49,12 @@ const update = async (req, res) => {
 
 const drop = async (req, res) => {
   try {
-    const categoryId = req.params.id; // Assuming the category ID is passed as a route parameter
-
-    // Find the category to be deleted
+    const categoryId = req.params.id; 
     const category = await Category.findByPk(categoryId);
-
     if (!category) {
       return response.error(res, "Category not found");
     }
-
-    // Delete the category
     await category.destroy();
-
     return response.message(res, "Category deleted successfully");
   } catch (error) {
     console.error("Error deleting category:", error);
