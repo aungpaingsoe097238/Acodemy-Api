@@ -19,7 +19,7 @@ const error = (res, message = "Error", code = 400) => {
   );
 };
 
-const message = (res, message = "Success", status) => {
+const message = (res, message = "Success", status = true) => {
   return res.json(
     {
       status: status,

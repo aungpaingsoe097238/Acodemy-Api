@@ -68,17 +68,13 @@ const show = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const categoryId = req.params.id; // Assuming the category ID is passed as a route parameter
+    const { id } = req.params;
     const { name, parentId } = req.body;
-
-    // Find the category to be updated
-    const category = await Category.findByPk(categoryId);
-
+    const category = await Category.findByPk(id);
     if (!category) {
       return response.error(res, "Category not found");
     }
 
-    // Update category attributes
     if (name) {
       category.name = name;
     }
@@ -97,15 +93,14 @@ const update = async (req, res) => {
 
 const drop = async (req, res) => {
   try {
-    const categoryId = req.params.id; 
-    const category = await Category.findByPk(categoryId);
+    const { id } = req.params;
+    const category = await Category.findByPk(id);
     if (!category) {
       return response.error(res, "Category not found");
     }
     await category.destroy();
     return response.message(res, "Category deleted successfully");
   } catch (error) {
-    console.error("Error deleting category:", error);
     return response.error(res, "Failed to delete category");
   }
 };

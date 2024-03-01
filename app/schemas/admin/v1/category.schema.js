@@ -20,7 +20,7 @@ const store = {
 
 const update = {
   name: {
-    notEmpty: { errorMessage: "Name field is required." },
+    optional: true,
   },
 };
 

@@ -18,7 +18,6 @@ router.post(
   checkSchema(courseSchema.store),
   (req, res, next) =>
     customValidationResult(req, res, next, "Course create failed"),
-  uploadFile,
   courseController.store
 );
 router
