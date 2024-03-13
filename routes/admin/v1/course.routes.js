@@ -18,6 +18,7 @@ router.post(
   checkSchema(courseSchema.store),
   (req, res, next) =>
     customValidationResult(req, res, next, "Course create failed"),
+  (req, res, next) => uploadFile(req, res, next, "course"),
   courseController.store
 );
 router
@@ -28,6 +29,7 @@ router
     checkSchema(courseSchema.update),
     (req, res, next) =>
       customValidationResult(req, res, next, "Course update failed"),
+    (req, res, next) => uploadFile(req, res, next, "course"),
     courseController.update
   )
   .delete(authMiddleware, courseController.drop);

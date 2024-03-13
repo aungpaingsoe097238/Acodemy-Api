@@ -39,6 +39,9 @@ module.exports = {
         type: Sequelize.ENUM("Beginner", "Intermediate", "Advanced"),
         allowNull: false
       },
+      rating: {
+        type: Sequelize.INTEGER
+      },
       imageUrl: {
         type: Sequelize.STRING,
         allowNull: false

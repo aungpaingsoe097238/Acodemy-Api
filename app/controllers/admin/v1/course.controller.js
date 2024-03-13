@@ -20,6 +20,10 @@ const store = async (req, res) => {
     const { title, description, categoryId, price, skill, lectures, duration } =
       req.body;
 
+    if(!req.filename){
+      return response.error(res, "Image field is required");
+    }  
+
     const course = await Course.create({
       title: title,
       slug: toolbox.slugify(title).slice(0, 50),
@@ -28,7 +32,7 @@ const store = async (req, res) => {
       categoryId: categoryId,
       price: price,
       skill: skill,
-      imageUrl: "",
+      imageUrl: req.filename,
       lectures: lectures,
       duration: duration,
     });
@@ -102,6 +106,10 @@ const update = async (req, res) => {
 
     if (duration) {
       course.duration = duration;
+    }
+
+    if (req.filename) {
+      course.filename = req.filename;
     }
 
     await course.save();

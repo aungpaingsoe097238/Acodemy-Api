@@ -44,6 +44,9 @@ const store = {
       errorMessage: "Skill field is invalid",
     },
   },
+  rating: {
+    notEmpty: { errorMessage: "Rating field is required" },
+  },
   lectures: {
     notEmpty: { errorMessage: "Lectures field is required" },
   },
