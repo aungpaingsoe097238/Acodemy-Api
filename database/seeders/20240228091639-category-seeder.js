@@ -8,25 +8,21 @@ module.exports = {
       [
         {
           name: "Programming",
-          parentId: null,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: "UI/UX",
-          parentId: null,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: "Networking",
-          parentId: null,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
         {
           name: "AI",
-          parentId: null,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

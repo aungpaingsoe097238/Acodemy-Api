@@ -26,10 +26,6 @@ const store = {
           if (!existingCategoryId) {
             throw new Error("Category field is invalid");
           }
-
-          if (existingCategoryId.parentId === null) {
-            throw new Error("Category field is not allow main category");
-          }
         }
       },
     },
@@ -65,9 +61,6 @@ const update = {
           if (!existingCategoryId) {
             throw new Error("Category field is invalid");
           }
-        }
-        if (existingCategoryId.parentId === null) {
-          throw new Error("Category field is not allow main category");
         }
       },
     },

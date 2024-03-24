@@ -16,10 +16,6 @@ const store = {
           if (!existingCategoryId) {
             throw new Error("Category field is invalid");
           }
-
-          if (existingCategoryId.parentId !== null) {
-            throw new Error("Category field is not main category");
-          }
         }
       },
     },
@@ -35,10 +31,6 @@ const update = {
           const existingCategoryId = await Category.findByPk(value);
           if (!existingCategoryId) {
             throw new Error("Category field is invalid");
-          }
-
-          if (existingCategoryId.parentId !== null) {
-            throw new Error("Category field is not main category");
           }
         }
       },
