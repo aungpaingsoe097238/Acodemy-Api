@@ -24,7 +24,7 @@ router.post(
 router
   .route("/:id")
   .get(authMiddleware, studentReviewController.show)
-  .put(
+  .post(
     authMiddleware,
     (req, res, next) =>
       customValidationResult(req, res, next, "Student project update failed"),

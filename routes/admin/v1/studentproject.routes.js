@@ -24,7 +24,7 @@ router.post(
 router
   .route("/:id")
   .get(authMiddleware, studentProjectController.show)
-  .put(
+  .post(
     authMiddleware,
     checkSchema(studentProjectSchema.update),
     (req, res, next) =>

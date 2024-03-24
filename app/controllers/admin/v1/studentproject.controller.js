@@ -76,25 +76,25 @@ const update = async (req, res) => {
     } 
 
     if (title) {
-      course.slug = toolbox.slugify(title).slice(0, 50);
-      course.title = title;
+      studentProject.slug = toolbox.slugify(title).slice(0, 50);
+      studentProject.title = title;
     }
 
     if (description) {
-      course.description = description;
-      course.except = toolbox.except(description);
+      studentProject.description = description;
+      studentProject.except = toolbox.except(description);
     }
 
     if (categoryId) {
-      course.categoryId = categoryId;
+      studentProject.categoryId = categoryId;
     }
 
     if (req.filename) {
-      course.filename = req.filename;
+      studentProject.imageUrl = req.filename;
     }
 
     await studentProject.save();
-    return response.success(res, "Student project updated successfully", course);
+    return response.success(res, "Student project updated successfully", studentProject);
   } catch (error) {
     return response.error(res, "Failed to update student project");
   }
@@ -107,7 +107,7 @@ const drop = async (req, res) => {
     if (!studentProject) {
       return response.error(res, "Student project not found");
     }
-    await course.destroy();
+    await studentProject.destroy();
     return response.message(res, "Student project deleted successfully");
   } catch (error) {
     return response.error(res, "Failed to delete student project");

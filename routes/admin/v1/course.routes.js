@@ -24,7 +24,7 @@ router.post(
 router
   .route("/:id")
   .get(authMiddleware, courseController.show)
-  .put(
+  .post(
     authMiddleware,
     checkSchema(courseSchema.update),
     (req, res, next) =>

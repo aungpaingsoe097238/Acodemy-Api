@@ -9,11 +9,12 @@ const success = (res, message = "Success", data = [], code = 200) => {
   );
 };
 
-const error = (res, message = "Error", code = 400) => {
+const error = (res, message = "Error", error = "Error" ,code = 400) => {
   return res.json(
     {
       status: false,
-      message: message
+      message: message,
+      error : error
     },
     code
   );

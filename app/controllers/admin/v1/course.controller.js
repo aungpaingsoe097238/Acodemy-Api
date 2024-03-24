@@ -17,7 +17,7 @@ const index = async (req, res) => {
 
 const store = async (req, res) => {
   try {
-    const { title, description, categoryId, price, skill, lectures, duration } =
+    const { title, description, categoryId, price, skill, lectures, duration, rating } =
       req.body;
 
     if(!req.filename){
@@ -35,6 +35,7 @@ const store = async (req, res) => {
       imageUrl: req.filename,
       lectures: lectures,
       duration: duration,
+      rating: rating
     });
 
     return response.success(res, "Course created successfully", course);
@@ -69,8 +70,9 @@ const show = async (req, res) => {
 
 const update = async (req, res) => {
   try {
+
     const { id } = req.params;
-    const { title, description, categoryId, price, skill, lectures, duration } =
+    const { title, description, categoryId, price, skill, lectures, duration, rating } =
       req.body;
     const course = await Course.findByPk(id);
 
@@ -108,8 +110,12 @@ const update = async (req, res) => {
       course.duration = duration;
     }
 
+    if(rating){
+      course.rating = rating;
+    }
+
     if (req.filename) {
-      course.filename = req.filename;
+      course.imageUrl = req.filename;
     }
 
     await course.save();

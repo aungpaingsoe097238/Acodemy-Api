@@ -45,13 +45,7 @@ const show = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const studentReview = await StudentReview.findByPk(id, {
-      include: [
-        {
-          attributes: ["id", "name"],
-        },
-      ],
-    });
+    const studentReview = await StudentReview.findByPk(id);
 
     if (!studentReview) {
       return response.error(res, "Student review not found");
@@ -63,6 +57,7 @@ const show = async (req, res) => {
       studentReview
     );
   } catch (error) {
+    console.log(error);
     return response.error(res, "Failed to show student review");
   }
 };
@@ -91,7 +86,7 @@ const update = async (req, res) => {
     }
 
     if (req.filename) {
-        studentReview.filename = req.filename;
+        studentReview.imageUrl = req.filename;
     }
 
     await studentReview.save();
