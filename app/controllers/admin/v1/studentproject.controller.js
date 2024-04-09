@@ -35,7 +35,7 @@ const store = async (req, res) => {
 
     return response.success(res, "Student project created successfully", studentProject);
   } catch (error) {
-    return response.error(res, "Failed to create student project");
+    return response.error(res, "Failed to create student project", error);
   }
 };
 
@@ -59,7 +59,7 @@ const show = async (req, res) => {
 
     return response.success(res, "student project show successfully", studentProject);
   } catch (error) {
-    return response.error(res, "Failed to show student project");
+    return response.error(res, "Failed to show student project", error);
   }
 };
 
@@ -96,7 +96,7 @@ const update = async (req, res) => {
     await studentProject.save();
     return response.success(res, "Student project updated successfully", studentProject);
   } catch (error) {
-    return response.error(res, "Failed to update student project");
+    return response.error(res, "Failed to update student project", error);
   }
 };
 
@@ -110,7 +110,7 @@ const drop = async (req, res) => {
     await studentProject.destroy();
     return response.message(res, "Student project deleted successfully");
   } catch (error) {
-    return response.error(res, "Failed to delete student project");
+    return response.error(res, "Failed to delete student project", error);
   }
 };
 

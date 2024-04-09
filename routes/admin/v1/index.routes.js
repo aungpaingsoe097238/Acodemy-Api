@@ -7,6 +7,7 @@ const categoryRoutes = require("./category.routes");
 const courseRoutes = require("./course.routes");
 const studentProjectRoutes = require("./studentproject.routes");
 const studentReviewRoutes = require("./studentreview.routes");
+const ourTeamMemberRoutes = require("./ourteammember.routes")
 
 router.use("/auth", authRoutes);
 router.use("/roles", roleRoutes);
@@ -16,5 +17,6 @@ router.use("/categories", categoryRoutes);
 router.use("/courses", courseRoutes);
 router.use("/student-projects", studentProjectRoutes);
 router.use("/student-reviews", studentReviewRoutes);
+router.use("/our-team-members", ourTeamMemberRoutes);;
 
 module.exports = router;

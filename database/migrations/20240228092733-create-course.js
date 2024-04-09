@@ -19,11 +19,12 @@ module.exports = {
         allowNull: false
       },
       except: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
+        allowNull: false
       },
       categoryId: {
         type: Sequelize.INTEGER,
@@ -40,7 +41,8 @@ module.exports = {
         allowNull: false
       },
       rating: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       imageUrl: {
         type: Sequelize.STRING,
@@ -52,6 +54,11 @@ module.exports = {
       },
       duration: {
         type: Sequelize.STRING,
+        allowNull: false
+      },
+      certificateStatus : {
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

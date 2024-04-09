@@ -37,7 +37,7 @@ const store = async (req, res) => {
       studentReview
     );
   } catch (error) {
-    return response.error(res, "Failed to create student revidw.");
+    return response.error(res, "Failed to create student revidw.", error);
   }
 };
 
@@ -57,8 +57,7 @@ const show = async (req, res) => {
       studentReview
     );
   } catch (error) {
-    console.log(error);
-    return response.error(res, "Failed to show student review");
+    return response.error(res, "Failed to show student review", error);
   }
 };
 
@@ -93,7 +92,7 @@ const update = async (req, res) => {
 
     return response.success(res, "Student review updated successfully.", studentReview);
   } catch (error) {
-    return response.error(res, "Failed to update student review.");
+    return response.error(res, "Failed to update student review.", error);
   }
 };
 
@@ -107,7 +106,7 @@ const drop = async (req, res) => {
     await studentReview.destroy();
     return response.message(res, "Student review deleted successfully");
   } catch (error) {
-    return response.error(res, "Failed to delete student review");
+    return response.error(res, "Failed to delete student review", error);
   }
 };
 

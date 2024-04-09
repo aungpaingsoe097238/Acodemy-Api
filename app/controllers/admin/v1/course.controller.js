@@ -17,7 +17,7 @@ const index = async (req, res) => {
 
 const store = async (req, res) => {
   try {
-    const { title, description, categoryId, price, skill, lectures, duration, rating } =
+    const { title, description, categoryId, price, skill, lectures, duration,certificateStatus, rating } =
       req.body;
 
     if(!req.filename){
@@ -35,12 +35,13 @@ const store = async (req, res) => {
       imageUrl: req.filename,
       lectures: lectures,
       duration: duration,
-      rating: rating
+      rating: rating,
+      certificateStatus: certificateStatus
     });
 
     return response.success(res, "Course created successfully", course);
   } catch (error) {
-    return response.error(res, "Failed to create course");
+    return response.error(res, "Failed to create course", error);
   }
 };
 
@@ -64,7 +65,7 @@ const show = async (req, res) => {
 
     return response.success(res, "Course show successfully", course);
   } catch (error) {
-    return response.error(res, "Failed to show course");
+    return response.error(res, "Failed to show course", error);
   }
 };
 
@@ -122,7 +123,7 @@ const update = async (req, res) => {
 
     return response.success(res, "Course updated successfully", course);
   } catch (error) {
-    return response.error(res, "Failed to update course");
+    return response.error(res, "Failed to update course", error);
   }
 };
 
@@ -136,7 +137,7 @@ const drop = async (req, res) => {
     await course.destroy();
     return response.message(res, "Course deleted successfully");
   } catch (error) {
-    return response.error(res, "Failed to delete course");
+    return response.error(res, "Failed to delete course", error);
   }
 };
 

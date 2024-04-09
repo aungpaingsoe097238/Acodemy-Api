@@ -16,10 +16,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       except: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       categoryId: {
         type: Sequelize.INTEGER,

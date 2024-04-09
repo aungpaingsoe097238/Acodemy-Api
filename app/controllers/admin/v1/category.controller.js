@@ -20,7 +20,7 @@ const store = async (req, res) => {
 
     return response.success(res, "Category created successfully", category);
   } catch (error) {
-    return response.error(res, "Failed to create category");
+    return response.error(res, "Failed to create category", error);
   }
 };
 
@@ -38,7 +38,7 @@ const show = async (req, res) => {
 
     return response.success(res, "Category show successfully", category);
   } catch (error) {
-    return response.error(res, "Failed to show category");
+    return response.error(res, "Failed to show category", error);
   }
 };
 
@@ -63,7 +63,7 @@ const update = async (req, res) => {
 
     return response.success(res, "Category updated successfully", category);
   } catch (error) {
-    return response.error(res, "Failed to update category");
+    return response.error(res, "Failed to update category", error);
   }
 };
 
@@ -77,7 +77,7 @@ const drop = async (req, res) => {
     await category.destroy();
     return response.message(res, "Category deleted successfully");
   } catch (error) {
-    return response.error(res, "Failed to delete category");
+    return response.error(res, "Failed to delete category", error);
   }
 };
 

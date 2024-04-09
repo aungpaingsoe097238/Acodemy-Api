@@ -48,9 +48,7 @@ const login = async (req, res) => {
 
   const generateToken = jwt.encode(user);
   user.token = generateToken;
-
   await User.update({ token : generateToken }, { where: { id: user.id } });
-
   return response.success(res, "Success", user);
 };
 
